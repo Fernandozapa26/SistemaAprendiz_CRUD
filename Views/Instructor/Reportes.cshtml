@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Generar Reportes";
+}
+
+<div class="container">
+    <h2 class="mb-4"><i class="bi bi-file-earmark-bar-graph"></i> Generar Reporte Detallado</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="GenerarReporteAlumno" method="post">
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label class="form-label">1. Seleccione la Ficha</label>
+                        <select id="selectFicha" name="fichaId" class="form-select" required>
+                            <option value="">-- Seleccionar Ficha --</option>
+                            @foreach (var ficha in ViewBag.Fichas)
+                            {
+                                <option value="@ficha.Id">@ficha.Codigo - @ficha.Programa</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label class="form-label">2. Seleccione el Aprendiz</label>
+                        <select id="selectAprendiz" name="aprendizId" class="form-select" required disabled>
+                            <option value="">-- Primero elija una ficha --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2 d-flex align-items-end mb-3">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-file-pdf"></i> Generar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('selectFicha').addEventListener('change', function() {
+            const fichaId = this.value;
+            const selectAprendiz = document.getElementById('selectAprendiz');
+            
+            if (fichaId) {
+                fetch(`/Instructor/ObtenerAprendicesPorFicha?fichaId=${fichaId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        selectAprendiz.innerHTML = '<option value="">-- Seleccionar Aprendiz --</option>';
+                        data.forEach(a => {
+                            selectAprendiz.innerHTML += `<option value="${a.id}">${a.nombre} ${a.apellido}</option>`;
+                        });
+                        selectAprendiz.disabled = false;
+                    });
+            } else {
+                selectAprendiz.disabled = true;
+                selectAprendiz.innerHTML = '<option value="">-- Primero elija una ficha --</option>';
+            }
+        });
+    </script>
+}

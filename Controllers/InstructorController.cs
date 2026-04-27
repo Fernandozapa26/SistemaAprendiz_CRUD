@@ -20,10 +20,10 @@ namespace SistemaAprendices.Controllers
 
         // --- MÉTODOS ADMINISTRATIVOS (Solo Admin) ---
 
-        // NUEVO: Acción para que el Admin vea a todos los instructores
+        // Muestra la lista global de todos los instructores
         public IActionResult Index()
         {
-            // Seguridad: Solo el admin puede ver la lista global de instructores
+            // Seguridad: Solo el admin puede gestionar instructores
             var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
             if (!rol.Contains("admin")) return RedirectToAction("Index", "Home");
 
@@ -31,7 +31,7 @@ namespace SistemaAprendices.Controllers
             return View(instructores);
         }
 
-        // NUEVO: Acción para que el Admin vea las fichas de un instructor específico
+        // Muestra las fichas específicas de un instructor seleccionado para el Admin
         public IActionResult VerFichasAsignadas(int id)
         {
             var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
@@ -46,19 +46,18 @@ namespace SistemaAprendices.Controllers
             return View(fichas);
         }
 
+
         // --- MÉTODOS PARA EL PERFIL DE INSTRUCTOR ---
 
         // 1. LISTAR FICHAS ASIGNADAS
         // Acción principal del instructor para ver sus grupos
         public IActionResult MisFichas()
         {
-            // Seguridad: Solo instructores
             var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
             if (!rol.Contains("instructor")) return RedirectToAction("Index", "Login");
 
-            // Recuperamos el ID de la sesión (guardado en el Login)
+            // Recuperamos el ID de la sesión
             int instructorId = int.Parse(HttpContext.Session.GetString("UsuarioId") ?? "0");
-
             var fichas = _instructorService.ObtenerFichasPorInstructor(instructorId);
             return View(fichas);
         }
@@ -67,8 +66,12 @@ namespace SistemaAprendices.Controllers
         // Muestra la lista de aprendices filtrada por el ID de la ficha seleccionada
         public IActionResult VerAprendices(int fichaId)
         {
+            var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
+            if (string.IsNullOrEmpty(rol)) return RedirectToAction("Index", "Login");
+
             // Usamos el servicio de aprendiz para obtener los alumnos de esa ficha
             var lista = _aprendizService.ObtenerPorFicha(fichaId);
+            ViewBag.FichaId = fichaId;
             return View(lista);
         }
 
@@ -116,18 +119,48 @@ namespace SistemaAprendices.Controllers
         public IActionResult SeguimientoDisciplinario(int id)
         {
             var historial = _instructorService.ObtenerHistorialPorAprendiz(id);
+            var aprendiz = _aprendizService.ObtenerPorId(id);
+
+            if (aprendiz != null)
+                ViewBag.Aprendiz = $"{aprendiz.Nombre} {aprendiz.Apellido}";
+
             return View(historial);
         }
 
-        // 6. REPORTES DE GRUPOS
-        // Muestra estadísticas generales de las fichas del instructor
+        // 6. REPORTES DE GRUPOS (GET)
+        // Carga la vista inicial de reportes con la lista de fichas para seleccionar
         public IActionResult Reportes()
         {
-            // Recuperamos el ID de la sesión
+            var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
+            if (!rol.Contains("instructor")) return RedirectToAction("Index", "Login");
+
             int instructorId = int.Parse(HttpContext.Session.GetString("UsuarioId") ?? "0");
 
-            var reporte = _instructorService.GenerarReporteGeneral(instructorId);
-            return View(reporte);
+            // Cargamos las fichas para que el instructor elija una en el combo
+            ViewBag.Fichas = _instructorService.ObtenerFichasPorInstructor(instructorId);
+
+            return View();
+        }
+
+        // NUEVO: Acción para cargar aprendices según la ficha seleccionada (vía AJAX)
+        public IActionResult ObtenerAprendicesPorFicha(int fichaId)
+        {
+            var aprendices = _aprendizService.ObtenerPorFicha(fichaId);
+            return Json(aprendices);
+        }
+
+        // NUEVO: Generar el reporte final del alumno
+        [HttpPost]
+        public IActionResult GenerarReporteAlumno(int fichaId, int aprendizId)
+        {
+            // Buscamos los datos para la vista de detalle
+            var historial = _instructorService.ObtenerHistorialPorAprendiz(aprendizId);
+            var aprendiz = _aprendizService.ObtenerPorId(aprendizId);
+
+            if (aprendiz != null)
+                ViewBag.Aprendiz = $"{aprendiz.Nombre} {aprendiz.Apellido}";
+
+            return View("DetalleReporte", historial);
         }
     }
 }

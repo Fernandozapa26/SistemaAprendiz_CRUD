@@ -17,14 +17,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var ficha in Model)
             {
                 <tr>
-                    <td>@item.Codigo</td>
-                    <td>@item.Programa</td>
-                    <td>@item.Jornada</td>
+                    <td>@ficha.Codigo</td>
+                    <td>@ficha.Programa</td>
+                    <td>@ficha.Jornada</td>
                     <td>
-                        <a href="/Instructor/VerAprendices?fichaId=@item.Id" class="btn btn-primary btn-sm">
+                        
+                        <a asp-controller="Instructor"
+                               asp-action="VerAprendices"
+                               asp-route-fichaId="@ficha.Id"
+                               class="btn btn-primary btn-sm">
                             Ver Aprendices
                         </a>
                     </td>

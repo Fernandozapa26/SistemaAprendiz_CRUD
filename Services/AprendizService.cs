@@ -7,7 +7,37 @@ namespace SistemaAprendices.Services
 {
     public class AprendizService : IAprendizService
     {
+        // Mantenemos la lista estática para persistencia en memoria durante la ejecución
         private static List<Aprendiz> lista = new List<Aprendiz>();
+
+        // Constructor para cargar datos de prueba si la lista está vacía
+        public AprendizService()
+        {
+            if (lista.Count == 0)
+            {
+                lista.Add(new Aprendiz
+                {
+                    Id = 1,
+                    Documento = "10203040",
+                    Nombre = "Carlos",
+                    Apellido = "Pérez",
+                    Ficha = "1", // Vinculado a la Ficha con ID 1 (ADSO)
+                    Programa = "Análisis y Desarrollo de Software",
+                    Estado = "Activo"
+                });
+
+                lista.Add(new Aprendiz
+                {
+                    Id = 2,
+                    Documento = "50607080",
+                    Nombre = "Ana",
+                    Apellido = "García",
+                    Ficha = "2", // Vinculado a la Ficha con ID 2
+                    Programa = "Programación de Software",
+                    Estado = "Activo"
+                });
+            }
+        }
 
         public List<Aprendiz> ObtenerTodos()
         {
@@ -52,8 +82,9 @@ namespace SistemaAprendices.Services
 
         public IEnumerable<Aprendiz> ObtenerPorFicha(int fichaId)
         {
-            string codigoFicha = fichaId.ToString();
-            return lista.Where(x => x.Ficha == codigoFicha).ToList();
+            // Convertimos el ID a string para comparar con la propiedad 'Ficha' del modelo
+            string codigoBusqueda = fichaId.ToString();
+            return lista.Where(x => x.Ficha == codigoBusqueda).ToList();
         }
 
         // --- NUEVOS MÉTODOS PARA EL PERFIL DE APRENDIZ ---
