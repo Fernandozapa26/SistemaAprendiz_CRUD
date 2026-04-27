@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SistemaAprendices.Models.Aprendiz>
+
+@{
+    ViewData["Title"] = "Aprendices Asignados";
+}
+
+<div class="container mt-4">
+    <h2>Aprendices de la Ficha</h2>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Documento</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.Apellido</td>
+                    <td>
+                        <a href="/Instructor/CrearObservacion?aprendizId=@item.Id" class="btn btn-warning btn-sm">
+                            Nueva Observación
+                        </a>
+                        <a href="/Instructor/SeguimientoDisciplinario/@item.Id" class="btn btn-info btn-sm text-white">
+                            Ver Historial
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Instructor/MisFichas" class="btn btn-secondary">Volver a Fichas</a>
+</div>

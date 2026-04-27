@@ -11,5 +11,7 @@ namespace SistemaAprendices.Interfaces
         Aprendiz ObtenerPorId(int id);
         void Actualizar(Aprendiz aprendiz);
         void Eliminar(int id);
+
+        IEnumerable<Aprendiz> ObtenerPorFicha(int fichaId);
     }
 }

@@ -11,57 +11,73 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SistemaAprendices
 build_property.RootNamespace = SistemaAprendices
-build_property.ProjectDir = C:\trimestre_5\Seguridad_informatica\SistemaAprendices\
+build_property.ProjectDir = C:\Users\juang\source\repos\SistemaAprendiz_CRUD\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\trimestre_5\Seguridad_informatica\SistemaAprendices
+build_property.MSBuildProjectDirectory = C:\Users\juang\source\repos\SistemaAprendiz_CRUD
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Aprendiz/Crear.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Aprendiz/Editar.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Aprendiz/Index.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Home/Index.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Home/Privacy.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Login/Index.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Instructor/CrearObservacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxDcmVhck9ic2VydmFjaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Instructor/MisFichas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxNaXNGaWNoYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Instructor/SeguimientoDisciplinario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxTZWd1aW1pZW50b0Rpc2NpcGxpbmFyaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Instructor/VerAprendices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxWZXJBcHJlbmRpY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Shared/Error.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/_ViewImports.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/_ViewStart.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/trimestre_5/Seguridad_informatica/SistemaAprendices/Views/Shared/_Layout.cshtml]
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-yme8m6mhei

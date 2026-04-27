@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SistemaAprendices.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
 
-                <a class="navbar-brand" href="/Home">
-                    Sistema Aprendices
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <strong>Sistema Aprendices</strong>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -27,24 +28,24 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home">Inicio</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/Aprendiz">Aprendices</a>
+                            <a class="nav-link" asp-controller="Aprendiz" asp-action="Index">Aprendices</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Instructores</a>
+                            <a class="nav-link" asp-controller="Instructor" asp-action="MisFichas">Instructores</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
+                            <a class="nav-link" asp-controller="Instructor" asp-action="Reportes">Reportes</a>
                         </li>
 
                     </ul>
 
-                    <a class="btn btn-light" href="/Login">
+                    <a class="btn btn-light" asp-controller="Login" asp-action="Index">
                         Cerrar Sesión
                     </a>
 
@@ -54,14 +55,14 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 mt-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - SistemaAprendices - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted bg-light">
+        <div class="container text-center py-3">
+            &copy; 2026 - SistemaAprendices - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

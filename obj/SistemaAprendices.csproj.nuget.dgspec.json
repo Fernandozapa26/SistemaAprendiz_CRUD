@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\trimestre_5\\Seguridad_informatica\\SistemaAprendices\\SistemaAprendices.csproj": {}
+    "C:\\Users\\juang\\source\\repos\\SistemaAprendiz_CRUD\\SistemaAprendices.csproj": {}
   },
   "projects": {
-    "C:\\trimestre_5\\Seguridad_informatica\\SistemaAprendices\\SistemaAprendices.csproj": {
+    "C:\\Users\\juang\\source\\repos\\SistemaAprendiz_CRUD\\SistemaAprendices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\trimestre_5\\Seguridad_informatica\\SistemaAprendices\\SistemaAprendices.csproj",
+        "projectUniqueName": "C:\\Users\\juang\\source\\repos\\SistemaAprendiz_CRUD\\SistemaAprendices.csproj",
         "projectName": "SistemaAprendices",
-        "projectPath": "C:\\trimestre_5\\Seguridad_informatica\\SistemaAprendices\\SistemaAprendices.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\trimestre_5\\Seguridad_informatica\\SistemaAprendices\\obj\\",
+        "projectPath": "C:\\Users\\juang\\source\\repos\\SistemaAprendiz_CRUD\\SistemaAprendices.csproj",
+        "packagesPath": "C:\\Users\\juang\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\juang\\source\\repos\\SistemaAprendiz_CRUD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\juang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -30,7 +30,6 @@
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -49,7 +48,6 @@
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",

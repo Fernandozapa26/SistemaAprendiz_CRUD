@@ -49,5 +49,15 @@ namespace SistemaAprendices.Services
                 lista.Remove(aprendiz);
             }
         }
+
+        // --- NUEVO MÉTODO PARA SOLUCIONAR EL ERROR ---
+        public IEnumerable<Aprendiz> ObtenerPorFicha(int fichaId)
+        {
+            // Como en tu formulario 'Ficha' es un texto, 
+            // convertimos el ID a string para poder comparar.
+            string codigoFicha = fichaId.ToString();
+
+            return lista.Where(x => x.Ficha == codigoFicha).ToList();
+        }
     }
 }
