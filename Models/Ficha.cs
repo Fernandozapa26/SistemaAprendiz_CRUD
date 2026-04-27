@@ -19,7 +19,9 @@ namespace SistemaAprendices.Models
         
         public string Jornada { get; set; }
 
-        
+        public string NumeroFicha { get; set; }
+
+
         public string Estado { get; set; }
 
         // Relación: Una ficha contiene muchos aprendices

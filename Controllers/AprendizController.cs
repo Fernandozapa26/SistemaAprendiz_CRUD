@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using SistemaAprendices.Interfaces;
 using SistemaAprendices.Models;
 
@@ -13,20 +14,20 @@ namespace SistemaAprendices.Controllers
             _aprendizService = aprendizService;
         }
 
-        // LISTAR
+        // --- MÉTODOS ADMINISTRATIVOS (Solo Admin) ---
+
         public IActionResult Index()
         {
+            // Seguridad: Solo el admin puede ver la lista global
+            var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
+            if (!rol.Contains("admin")) return RedirectToAction("Index", "Home");
+
             var lista = _aprendizService.ObtenerTodos();
             return View(lista);
         }
 
-        // MOSTRAR FORMULARIO CREAR
-        public IActionResult Crear()
-        {
-            return View();
-        }
+        public IActionResult Crear() => View();
 
-        // GUARDAR NUEVO APRENDIZ
         [HttpPost]
         public IActionResult Crear(Aprendiz aprendiz)
         {
@@ -34,20 +35,13 @@ namespace SistemaAprendices.Controllers
             return RedirectToAction("Index");
         }
 
-        // MOSTRAR FORMULARIO EDITAR
         public IActionResult Editar(int id)
         {
             var aprendiz = _aprendizService.ObtenerPorId(id);
-
-            if (aprendiz == null)
-            {
-                return NotFound();
-            }
-
+            if (aprendiz == null) return NotFound();
             return View(aprendiz);
         }
 
-        // ACTUALIZAR DATOS
         [HttpPost]
         public IActionResult Editar(Aprendiz aprendiz)
         {
@@ -55,11 +49,35 @@ namespace SistemaAprendices.Controllers
             return RedirectToAction("Index");
         }
 
-        // ELIMINAR REGISTRO
         public IActionResult Eliminar(int id)
         {
             _aprendizService.Eliminar(id);
             return RedirectToAction("Index");
+        }
+
+
+        // --- MÉTODOS PARA EL PERFIL DE APRENDIZ (Solo Aprendiz) ---
+
+        public IActionResult MisCursos()
+        {
+            var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
+            if (!rol.Contains("aprendiz")) return RedirectToAction("Index", "Login");
+
+            var aprendizId = HttpContext.Session.GetString("UsuarioId");
+            var misCursos = _aprendizService.ObtenerMisCursos(aprendizId);
+
+            return View(misCursos);
+        }
+
+        public IActionResult MisReportes()
+        {
+            var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
+            if (!rol.Contains("aprendiz")) return RedirectToAction("Index", "Login");
+
+            var aprendizId = HttpContext.Session.GetString("UsuarioId");
+            var misReportes = _aprendizService.ObtenerMisInformes(aprendizId);
+
+            return View(misReportes);
         }
     }
 }

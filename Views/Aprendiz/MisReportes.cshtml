@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SistemaAprendices.Models.Informe>
+
+<div class="container">
+    <h2 class="mb-4"><i class="bi bi-file-earmark-text"></i> Mis Informes y Observaciones</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">No tienes informes registrados hasta el momento.</div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 mb-3">
+                    <div class="card border-start border-4 @(item.Tipo == "Felicitación" ? "border-success" : "border-warning") shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title text-primary">@item.Asunto</h5>
+                                <span class="badge rounded-pill bg-secondary">@item.Fecha</span>
+                            </div>
+                            <p class="card-text text-muted">@item.Descripcion</p>
+                            <hr />
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Por: <strong>@item.InstructorNombre</strong></small>
+                                <span class="badge @(item.Tipo == "Felicitación" ? "bg-success" : "bg-warning text-dark")">@item.Tipo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
