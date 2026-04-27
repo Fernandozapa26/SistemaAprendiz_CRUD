@@ -1,0 +1,53 @@
+﻿@model SistemaAprendices.Models.Aprendiz
+
+@{
+    ViewData["Title"] = "Registrar Aprendiz";
+}
+
+<div class="container mt-4">
+
+    <h2>Registrar Aprendiz</h2>
+
+    <form method="post">
+
+        <div class="mb-3">
+            <label>Documento</label>
+            <input asp-for="Documento" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido</label>
+            <input asp-for="Apellido" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Ficha</label>
+            <input asp-for="Ficha" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Programa</label>
+            <input asp-for="Programa" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Estado</label>
+            <input asp-for="Estado" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Guardar
+        </button>
+
+        <a href="/Aprendiz" class="btn btn-secondary">
+            Volver
+        </a>
+
+    </form>
+
+</div>

@@ -1,0 +1,57 @@
+﻿@model List<SistemaAprendices.Models.Aprendiz>
+
+@{
+    ViewData["Title"] = "Aprendices";
+}
+
+<div class="container mt-4">
+
+    <h2>Lista de Aprendices</h2>
+
+    <a href="/Aprendiz/Crear" class="btn btn-primary mb-3">
+        Nuevo Aprendiz
+    </a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Ficha</th>
+                <th>Programa</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Documento</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Ficha</td>
+                <td>@item.Programa</td>
+                <td>@item.Estado</td>
+                <td>
+                    <a href="/Aprendiz/Editar/@item.Id" class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+
+                    <a href="/Aprendiz/Eliminar/@item.Id" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Desea eliminar este registro?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+
+</div>
