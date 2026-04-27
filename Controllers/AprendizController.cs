@@ -16,18 +16,33 @@ namespace SistemaAprendices.Controllers
 
         // --- MÉTODOS ADMINISTRATIVOS (Solo Admin) ---
 
+        // ACTUALIZADO: Ahora muestra la lista de Fichas en lugar de todos los aprendices
         public IActionResult Index()
         {
             // Seguridad: Solo el admin puede ver la lista global
             var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
             if (!rol.Contains("admin")) return RedirectToAction("Index", "Home");
 
-            var lista = _aprendizService.ObtenerTodos();
-            return View(lista);
+            // Obtenemos las fichas disponibles (usando el método del servicio)
+            var fichas = _aprendizService.ObtenerMisCursos("");
+            return View("Fichas", fichas);
+        }
+
+        // NUEVO: Muestra los aprendices de una ficha específica
+        public IActionResult VerPorFicha(int id)
+        {
+            var rol = HttpContext.Session.GetString("Rol")?.ToLower() ?? "";
+            if (!rol.Contains("admin")) return RedirectToAction("Index", "Home");
+
+            var aprendices = _aprendizService.ObtenerPorFicha(id);
+            ViewBag.FichaId = id; // Para mostrar el número en la vista
+
+            return View("ListaPorFicha", aprendices);
         }
 
         public IActionResult Crear() => View();
 
+        // GUARDAR NUEVO APRENDIZ
         [HttpPost]
         public IActionResult Crear(Aprendiz aprendiz)
         {
@@ -35,6 +50,7 @@ namespace SistemaAprendices.Controllers
             return RedirectToAction("Index");
         }
 
+        // MOSTRAR FORMULARIO EDITAR
         public IActionResult Editar(int id)
         {
             var aprendiz = _aprendizService.ObtenerPorId(id);
@@ -42,6 +58,7 @@ namespace SistemaAprendices.Controllers
             return View(aprendiz);
         }
 
+        // ACTUALIZAR DATOS
         [HttpPost]
         public IActionResult Editar(Aprendiz aprendiz)
         {
@@ -49,6 +66,7 @@ namespace SistemaAprendices.Controllers
             return RedirectToAction("Index");
         }
 
+        // ELIMINAR REGISTRO
         public IActionResult Eliminar(int id)
         {
             _aprendizService.Eliminar(id);

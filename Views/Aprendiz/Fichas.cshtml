@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SistemaAprendices.Models.Ficha>
+
+<div class="container">
+    <h2 class="mb-4"><i class="bi bi- collection"></i> Listado de Fichas</h2>
+    
+    <div class="table-responsive">
+        <table class="table table-hover shadow-sm">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Número de Ficha</th>
+                    <th>Programa de Formación</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ficha in Model)
+                {
+                    <tr>
+                        <td>@ficha.Id</td>
+                        <td><strong>@ficha.NumeroFicha</strong></td>
+                        <td>@ficha.Programa</td>
+                        <td class="text-center">
+                            <a asp-action="VerPorFicha" asp-route-id="@ficha.Id" class="btn btn-info btn-sm">
+                                <i class="bi bi-people-fill"></i> Ver aprendices
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

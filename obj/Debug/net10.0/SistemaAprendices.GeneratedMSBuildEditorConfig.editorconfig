@@ -30,8 +30,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/Fichas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcRmljaGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/ListaPorFicha.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXByZW5kaXpcTGlzdGFQb3JGaWNoYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/juang/source/repos/SistemaAprendiz_CRUD/Views/Aprendiz/MisReportes.cshtml]

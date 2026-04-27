@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SistemaAprendices.Models.Aprendiz>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Aprendices de la Ficha: @ViewBag.FichaId</h2>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver a Fichas
+        </a>
+    </div>
+
+    <table class="table table-striped border shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Documento</th>
+                <th>Nombre Completo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Documento</td>
+                    <td>@item.Nombre @item.Apellido</td>
+                    <td>
+                        <span class="badge @(item.Estado == "Activo" ? "bg-success" : "bg-danger")">
+                            @item.Estado
+                        </span>
+                    </td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
