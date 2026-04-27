@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SistemaAprendices.Models.Ficha>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Fichas de: <span class="text-primary">@ViewBag.InstructorNombre</span></h2>
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+
+    <div class="row">
+        @foreach (var ficha in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm border-primary">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ficha @ficha.NumeroFicha</h5>
+                        <p class="card-text text-muted">@ficha.Programa</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

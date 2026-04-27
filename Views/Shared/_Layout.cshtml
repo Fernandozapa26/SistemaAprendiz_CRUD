@@ -5,11 +5,9 @@
     // Recuperamos el Rol y el Nombre guardados en la sesión
     var rolRaw = HttpContextAccessor.HttpContext.Session.GetString("Rol") ?? "";
     var nombre = HttpContextAccessor.HttpContext.Session.GetString("Nombre");
-    
-    // El truco: Convertimos a minúsculas para comparar sin errores de ortografía
+    // Convertimos a minúsculas para comparar sin errores
     var rol = rolRaw.ToLower();
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,40 +33,45 @@
 
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="navbar-nav me-auto">
-                        
-                        @* Solo mostramos el menú si hay alguien logueado *@
+
                         @if (!string.IsNullOrEmpty(rol))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a>
                             </li>
 
-                            @* 1. Vista de ADMINISTRADOR (Acceso Total) *@
+                            @* 1. Vista de ADMINISTRADOR *@
                             @if (rol.Contains("admin"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Aprendiz" asp-action="Index">Aprendices</a>
+                                    <a class="nav-link" asp-controller="Aprendiz" asp-action="Index">
+                                        <i class="bi bi-people"></i> Aprendices
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Instructor" asp-action="MisFichas">Instructores</a>
+                                    <a class="nav-link" asp-controller="Instructor" asp-action="Index">
+                                        <i class="bi bi-person-badge"></i> Instructores
+                                    </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Instructor" asp-action="Reportes">Reportes</a>
-                                </li>
+                                @* SECCIÓN DE REPORTES ELIMINADA PARA ADMIN *@
                             }
-                            
+
                             @* 2. Vista de INSTRUCTOR *@
                             else if (rol.Contains("instructor"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Instructor" asp-action="MisFichas">Mis Fichas</a>
+                                    <a class="nav-link" asp-controller="Instructor" asp-action="MisFichas">
+                                        <i class="bi bi-journal-bookmark"></i> Mis Fichas
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Instructor" asp-action="Reportes">Reportes</a>
+                                    <a class="nav-link" asp-controller="Instructor" asp-action="Reportes">
+                                        <i class="bi bi-clipboard-data"></i> Reportes
+                                    </a>
                                 </li>
                             }
 
-                            @* 3. Vista de APRENDIZ  *@
+                            @* 3. Vista de APRENDIZ *@
                             else if (rol.Contains("aprendiz"))
                             {
                                 <li class="nav-item">
@@ -116,7 +119,7 @@
 
     <footer class="border-top footer text-muted bg-light">
         <div class="container text-center py-3">
-            &copy; 2026 - SistemaAprendices - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+            &copy; 2026 - SistemaAprendices
         </div>
     </footer>
 

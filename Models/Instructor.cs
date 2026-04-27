@@ -22,5 +22,7 @@
         // Una lista de las fichas que este instructor tiene asignadas
         // Esto te permitirá hacer algo como: instructor.FichasAsignadas
         public List<string> FichasAsignadas { get; set; }
+
+        public string Especialidad { get; set; }
     }
 }

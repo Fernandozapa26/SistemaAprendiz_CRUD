@@ -7,38 +7,47 @@ namespace SistemaAprendices.Services
 {
     public class InstructorService : IInstructorService
     {
-        // Simulamos la base de datos con listas privadas
         private readonly List<Ficha> _fichas;
         private readonly List<ObservacionAcademica> _observaciones;
 
+        // NUEVO: Lista de instructores para que el Admin los vea
+        private readonly List<Instructor> _instructores;
+
         public InstructorService()
         {
-            // Inicializamos con datos de prueba
-            // Corregido: Usamos 'Programa' y 'Jornada' para coincidir con el modelo Ficha
+            // Datos de prueba para Instructores
+            _instructores = new List<Instructor>
+            {
+                new Instructor { Id = 1, Nombre = "Juan", Apellido = "Goez", Especialidad = "Software" },
+                new Instructor { Id = 2, Nombre = "Maria", Apellido = "Lopez", Especialidad = "Redes" }
+            };
+
             _fichas = new List<Ficha>
             {
-                new Ficha {
-                    Id = 1,
-                    Codigo = "2827301",
-                    Programa = "Análisis y Desarrollo de Software",
-                    Jornada = "Mañana",
-                    InstructorResponsable = "Juan Goez"
-                },
-                new Ficha {
-                    Id = 2,
-                    Codigo = "2827302",
-                    Programa = "Programación de Software",
-                    Jornada = "Tarde",
-                    InstructorResponsable = "Juan Goez"
-                }
+                new Ficha { Id = 1, Codigo = "2827301", Programa = "Análisis y Desarrollo de Software", Jornada = "Mañana", InstructorResponsable = "Juan Goez" },
+                new Ficha { Id = 2, Codigo = "2827302", Programa = "Programación de Software", Jornada = "Tarde", InstructorResponsable = "Juan Goez" }
             };
 
             _observaciones = new List<ObservacionAcademica>();
         }
 
-        // 1. CONSULTA DE FICHAS
+        // --- SOLUCIÓN A ERRORES CS0535 (Implementación de Interfaz) ---
+
+        public IEnumerable<Instructor> ObtenerTodos()
+        {
+            return _instructores;
+        }
+
+        public Instructor ObtenerPorId(int id)
+        {
+            return _instructores.FirstOrDefault(i => i.Id == id);
+        }
+
+        // --- MÉTODOS QUE YA TENÍAS (Mantenemos tus comentarios) ---
+
         public IEnumerable<Ficha> ObtenerFichasPorInstructor(int instructorId)
         {
+            // Por ahora devolvemos todas para la prueba del Admin
             return _fichas;
         }
 
@@ -47,10 +56,8 @@ namespace SistemaAprendices.Services
             return _fichas.FirstOrDefault(f => f.Id == fichaId);
         }
 
-        // 2. SEGUIMIENTO ACADÉMICO
         public void GuardarObservacion(ObservacionAcademica observacion)
         {
-            // Simulamos el autoincremento del ID
             observacion.Id = _observaciones.Count + 1;
             _observaciones.Add(observacion);
         }
@@ -60,7 +67,6 @@ namespace SistemaAprendices.Services
             return _observaciones.Where(o => o.AprendizId == aprendizId).ToList();
         }
 
-        // 3. REPORTES
         public ReporteGeneral GenerarReporteGeneral(int instructorId)
         {
             return new ReporteGeneral
@@ -72,7 +78,6 @@ namespace SistemaAprendices.Services
                 {
                     CodigoFicha = f.Codigo,
                     CantidadAprendices = 25,
-                    // Corregido: Se eliminó la referencia a 'o.Aprendiz.Ficha' que daba error
                     ObservacionesRegistradas = _observaciones.Count(o => o.AprendizId > 0)
                 }).ToList()
             };
